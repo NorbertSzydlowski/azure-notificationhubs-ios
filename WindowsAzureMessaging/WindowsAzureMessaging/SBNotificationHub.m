@@ -284,7 +284,7 @@ static NSString *const _UserAgentTemplate = @"NOTIFICATIONHUBS/%@(api-origin=Ios
     NSError *parseError;
     NSArray *registrations = [SBRegistrationParser parseRegistrations:data error:&parseError];
     if (!parseError) {
-        [storageManager updateWithRegistrationName:name registration:(SBRegistration *)[registrations objectAtIndex:0]];
+        [storageManager updateWithRegistrationName:name registration:(SBRegistration *)[registrations firstObject]];
     } else if (error) {
         (*error) = parseError;
     }
@@ -619,7 +619,7 @@ static NSString *const _UserAgentTemplate = @"NOTIFICATIONHUBS/%@(api-origin=Ios
     if (operationError == nil) {
         NSArray *registrations = [SBRegistrationParser parseRegistrations:data error:&operationError];
         if (operationError == nil) {
-            [storageManager updateWithRegistrationName:name registration:(SBRegistration *)[registrations objectAtIndex:0]];
+            [storageManager updateWithRegistrationName:name registration:(SBRegistration *)[registrations firstObject]];
         }
     }
 
@@ -650,7 +650,7 @@ static NSString *const _UserAgentTemplate = @"NOTIFICATIONHUBS/%@(api-origin=Ios
     if (operationError == nil) {
         NSArray *registrations = [SBRegistrationParser parseRegistrations:data error:&operationError];
         if (operationError == nil) {
-            [storageManager updateWithRegistrationName:name registration:(SBRegistration *)[registrations objectAtIndex:0]];
+            [storageManager updateWithRegistrationName:name registration:(SBRegistration *)[registrations firstObject]];
         }
     }
 
